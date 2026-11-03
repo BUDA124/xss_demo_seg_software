@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Home</title>
+</head>
+<body>
+
+<h1>Welcome, {{ username }}</h1>
+
+<p>Secret balance: {{ balance }}</p>
+
+<a href="/logout">Logout</a>
+
+<br><br>
+
+<form action="/search">
+    <input name="q" placeholder="type something">
+    <button>Search</button>
+</form>
+<hr>
+<p><a href="/comments">Go to Comments (Stored XSS)</a></p>
+
+</body>
+</html>
+

@@ -52,7 +52,7 @@ pip install -r requirements.txt
 python flaskapi.py
 ```
 
-La aplicación quedará disponible en: `http://localhost:5000`
+La aplicación quedará disponible en: `http://localhost:5000` (redirecciona automáticamente a `/login`) o directamente en `http://localhost:5000/login`
 
 ---
 
@@ -161,3 +161,4 @@ Al deshabilitar `HttpOnly`, las cookies de sesión son accesibles vía JavaScrip
        return response
    ```
 4. **Sanitización en el servidor**: Si se requiere permitir texto enriquecido (HTML), emplear librerías de sanitización con listas blancas estrictas (como `bleach.clean(...)`).
+

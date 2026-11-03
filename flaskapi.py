@@ -20,6 +20,12 @@ comments = []  # fake database for stored XSS
 #     return response
 
 
+# ---------------- ROOT / INDEX ----------------
+@app.route("/")
+def index():
+    return redirect(url_for("login"))
+
+
 # ---------------- HOME ----------------
 @app.route("/home")
 def home():
